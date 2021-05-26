@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken')
 const Voter = require('../models/voter')
 
 const auth = async (req, res, next) => {
