@@ -2,6 +2,10 @@ const express = require('express')
 const router = new express.Router()
 const Admin = require('../models/admin')
 const Voter = require('../models/voter')
+const President = require('../models/president')
+const Gensec = require('../models/gensec')
+const Cultsec = require('../models/cultsec')
+const Sportsec = require('../models/sportsec')
 const auth = require('../middleware/admin')
 
 // 0. create admin
@@ -77,7 +81,7 @@ router.post('/addVoter', auth ,async (req, res) => {
     const password = req.body.password
     try {
         await voter.save()
-        res.send({voter: voter.getPublicProfile(), password})
+        res.send({voter, password})
     } catch (error) {
         res.status(400).send(error)
     }
@@ -88,6 +92,50 @@ router.delete('/deleteVoter', auth, async (req, res) => {
     try {
         await Voter.findOneAndDelete({username: req.body.username})
         res.status(200).send()
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+// 8. add President candidate
+router.post('/addPresident', auth, async (req, res) => {
+    const candidate = new President(req.body)
+    try {
+        await candidate.save()
+        res.status(201).send()
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+// 9. add General Secretary candidate
+router.post('/addGensec', auth, async (req, res) => {
+    const candidate = new Gensec(req.body)
+    try {
+        await candidate.save()
+        res.status(201).send()
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+// 10. add Cultural Secretary candidate
+router.post('/addCultsec', auth, async (req, res) => {
+    const candidate = new Cultsec(req.body)
+    try {
+        await candidate.save()
+        res.status(201).send()
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+// 11. add Sports Secretary candidate
+router.post('/addSportsec', auth, async (req, res) => {
+    const candidate = new Sportsec(req.body)
+    try {
+        await candidate.save()
+        res.status(201).send()
     } catch (error) {
         res.status(400).send(error)
     }

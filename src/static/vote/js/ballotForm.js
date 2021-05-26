@@ -10,7 +10,11 @@ async function postFormDataAsJson({ url, formData }) {
 		},
 		body: formDataJsonString,
 	};
-	await fetch(url, fetchOptions);
+
+	const response = await fetch(url, fetchOptions);
+	console.log(response)
+	window.alert(response.text)
+	window.location.reload()
 }
 
 

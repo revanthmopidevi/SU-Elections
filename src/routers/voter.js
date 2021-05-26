@@ -3,7 +3,7 @@ const path = require('path')
 const router = new express.Router()
 const Voter = require('../models/voter')
 const President = require('../models/president')
-const gensec = require('../models/gensec')
+const Gensec = require('../models/gensec')
 const Cultsec = require('../models/cultsec')
 const Sportsec = require('../models/sportsec')
 const auth = require('../middleware/voter')
@@ -21,12 +21,33 @@ router.get('/', (req, res) => {
 })
 
 // 2. vote route
-router.post('/', auth, (req, res) => {
-    const president = req.body.president
-    const gensec = req.body.gensec
-    const cultsec = req.body.cultsec
-    const sportsec = req.body.sportsec
-    res.send({"response": "Accepted"})
+router.post('/', auth, async (req, res) => {
+    // console.log(req.body)
+    try {
+        const president = await President.findOne({name: req.body.president})
+        const gensec = await Gensec.findOne({name: req.body.gensec})
+        const cultsec = await Cultsec.findOne({name: req.body.cultsec})
+        const sportsec = await Sportsec.findOne({name: req.body.sportsec})
+
+        president.votes += 1
+        gensec.votes += 1
+        cultsec.votes += 1
+        sportsec.votes += 1
+
+        await president.save()
+        await gensec.save()
+        await cultsec.save()
+        await sportsec.save()
+
+        res.status(200).send({
+            "text": "Thank You for Voting."
+        })
+    } catch (e) {
+        // console.log(e)
+        res.status(400).send({
+            "text": "Internal Server Error."
+        })
+    }
 })
 
 module.exports = router

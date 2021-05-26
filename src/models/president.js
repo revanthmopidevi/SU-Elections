@@ -8,9 +8,15 @@ const presidentSchema = new mongoose.Schema({
         trim:true,
         required: true
     },
+    ID: {
+        type: String,
+        unique: true,
+        required: false,
+        trim: true
+    },
     votes: {
         type: Number,
-        required: false,
+        required: true,
         default: 0
     }
 }, {

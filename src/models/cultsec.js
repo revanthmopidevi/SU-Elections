@@ -8,6 +8,12 @@ const cultsecSchema = new mongoose.Schema({
         trim:true,
         required: true
     },
+    ID: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
     votes: {
         type: Number,
         required: false,

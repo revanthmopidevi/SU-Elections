@@ -4,9 +4,13 @@ const Voter = require('../models/voter')
 const auth = async (req, res, next) => {
     try {
         const voter = await Voter.findByCredentials(req.body.username, req.body.password)
+        voter.voted = true
+        await voter.save()
         next()
     } catch(e) {
-        res.status(401).send("Invalid or Expired Credentials.")
+        res.status(401).send({
+            "text": "Invalid or Expired Credentials."
+        })
     }
 }
 
