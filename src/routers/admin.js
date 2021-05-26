@@ -141,4 +141,14 @@ router.post('/addSportsec', auth, async (req, res) => {
     }
 })
 
+// 12. get voter data
+router.get('/getVoter', auth, async (req, res) => {
+    try {
+        const voter = await Voter.findOne({username: req.body.username})
+        res.status(200).send(voter)
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+})
 module.exports = router
