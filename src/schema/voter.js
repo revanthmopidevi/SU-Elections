@@ -3,7 +3,7 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const adminSchema = new mongoose.Schema({
+const voterSchema = new mongoose.Schema({
     username: {
         type: String,
         lowercase:true,
@@ -32,21 +32,21 @@ const adminSchema = new mongoose.Schema({
     timestamps: true
 })
 
-adminSchema.methods.generateAuthToken = async function () {
-    const admin = this
-    const token = jwt.sign({ username: admin.username}, 'secret_string')
-    admin.tokens = admin.tokens.concat({token})
-    await admin.save()
+voterSchema.methods.generateAuthToken = async function () {
+    const voter = this
+    const token = jwt.sign({ username: voter.username}, 'secret_string')
+    voter.tokens = voter.tokens.concat({token})
+    await voter.save()
     return token
 }
 
-adminSchema.pre('save', async function (next) {
-    const admin = this
-    if (admin.isModified('password')) {
-        admin.password = await bcrypt.hash(admin.password, 8)
+voterSchema.pre('save', async function (next) {
+    const voter = this
+    if (voter.isModified('password')) {
+        voter.password = await bcrypt.hash(voter.password, 8)
     }
     next()
 })
 
-const Admin = mongoose.model('Admin', adminSchema)
-module.exports = Admin
+const voter = mongoose.model('voter', voterSchema)
+module.exports = Voter
