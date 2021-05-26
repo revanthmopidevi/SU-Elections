@@ -4,21 +4,21 @@ const router = new express.Router()
 const Voter = require('../models/voter')
 const auth = require('../middleware/voter')
 
-router.use('/login', express.static(path.join(__dirname, '..', 'static', 'login')));
+router.use('/', express.static(path.join(__dirname, '..', 'static', 'login')));
 
 // 0. Information Page
-router.get('/', (req, res) => {
+router.get('/info', (req, res) => {
     res.send({"response": "Accepted"})
 })
 
-// 1. login page
-router.get('/login', (req, res) => {
+// 1. vote page
+router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'static', 'login', 'login.html'))
 })
 
-// 2. login route
-router.post('/login', (req, res) => {
-    console.log(req.body.username)
+// 2. vote route
+router.post('/', (req, res) => {
+    console.log(req.body)
     res.send({"response": "Accepted"})
 })
 

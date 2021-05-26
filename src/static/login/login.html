@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="icon" type="image/png" href="">
+        <link rel="icon" type="image/png" href="./images/icon.png">
         <!-- <script type="text/javascript"> 
             window.history.forward(); 
             function noBack() { 
@@ -33,7 +33,7 @@
     <body>
         <div class="container">
             <img src="./images/logo.jpg" alt="election.commission@hyderabad.bits-pilani.ac.in" height="140px" width="420px">
-            <form method="POST" action="/vote/login" id="loginForm">
+            <form method="POST" action="/vote" id="loginForm">
                 <div class="row">
                     <div class="col">
                         <input type="text" class="form-control" name="username" id="usernam" placeholder="f201XXXX" maxlength="9" required>
@@ -44,7 +44,43 @@
                 </div><br>
                 <div class="row">
                     <div class="col">
-                        <button type="submit" data-toggle="tooltip" data-placement="bottom" title="confirm submission" id="login" class="center btn btn-success">Login</button>
+                        <select name="president"  class="form-control" required>
+                            <option disabled selected value="">President</option>
+                            <option value="Dummy A">A</option>
+                            <option value="Dummy B">B</option>
+                        </select>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col">
+                        <select name="general_secretary" class="form-control" required>
+                            <option disabled selected value="">General Secretary</option>
+                            <option value="Dummy A">A</option>
+                            <option value="Dummy B">B</option>
+                        </select>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col">
+                        <select name="cultural_secretary" class="form-control" required>
+                            <option disabled selected value="">Cultural Secretary</option>
+                            <option value="Dummy A">A</option>
+                            <option value="Dummy B">B</option>
+                        </select>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col">
+                        <select name="sports_secretary" class="form-control" required>
+                            <option disabled selected value="">Sports Secretary</option>
+                            <option value="Dummy A">A</option>
+                            <option value="Dummy B">B</option>
+                        </select>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" data-toggle="tooltip" data-placement="bottom" title="confirm submission" id="vote" class="center btn btn-success">VOTE</button>
                     </div>
                 </div>
             </form><br>
