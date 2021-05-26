@@ -1,18 +1,18 @@
 const jwt = require('jsonwebtoken')
-const Admin = require('../models/admin')
+const Voter = require('../models/voter')
 
 const auth = async (req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '')
         const decoded = jwt.verify(token, 'secret_string')
-        const admin = await Admin.findOne({username: decoded.username, 'tokens.token': token})
+        const voter = await Voter.findOne({username: decoded.username, 'tokens.token': token})
         
-        if (!admin) {
+        if (!voter) {
             throw new Error()
         }
 
         req.token = token
-        req.admin = admin
+        req.voter = voter
         next()
     } catch(e) {
         res.status(401).send({"error": "Please authenticate."})
