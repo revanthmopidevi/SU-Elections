@@ -25,7 +25,7 @@ const voterSchema = new mongoose.Schema({
     voted: {
         type: Boolean,
         required: false,
-        default: true
+        default: false
     }
 }, {
     timestamps: true
@@ -42,9 +42,11 @@ voterSchema.statics.findByCredentials = async (username, password) => {
         throw new Error("Wrong Username or Password.")
     }
 
+    if (voter.voted === true) {
+        throw new Error("Vote casted.")
+    }
     return voter
 }
-
 
 voterSchema.pre('save', async function (next) {
     const voter = this

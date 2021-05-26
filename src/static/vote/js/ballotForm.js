@@ -10,15 +10,7 @@ async function postFormDataAsJson({ url, formData }) {
 		},
 		body: formDataJsonString,
 	};
-
-	const response = await fetch(url, fetchOptions);
-
-	if (!response.ok) {
-		const errorMessage = await response.text();
-		throw new Error(errorMessage);
-	}
-
-	return response.json();
+	await fetch(url, fetchOptions);
 }
 
 
@@ -30,9 +22,7 @@ async function handleFormSubmit(event) {
 
 	try {
 		const formData = new FormData(form);
-		const responseData = await postFormDataAsJson({ url, formData });
-
-		console.log({ responseData });
+		await postFormDataAsJson({ url, formData });
 	} catch (error) {
 		console.error(error);
 	}
@@ -40,6 +30,6 @@ async function handleFormSubmit(event) {
 
 
 window.onload=function(){
-	const form = document.getElementById("loginForm");
+	const form = document.getElementById("ballot");
 	form.addEventListener("submit", handleFormSubmit);
 }

@@ -12,7 +12,7 @@
                 window.history.forward(); 
             } 
         </script> -->
-        <script src="./js/loginForm.js"></script>
+        <script src="./js/ballotForm.js"></script>
         <style>
             html, body
             {height:100vh;}
@@ -33,7 +33,7 @@
     <body>
         <div class="container">
             <img src="./images/logo.jpg" alt="election.commission@hyderabad.bits-pilani.ac.in" height="140px" width="420px">
-            <form method="POST" action="/vote" id="loginForm">
+            <form method="POST" action="/vote" id="ballot">
                 <div class="row">
                     <div class="col">
                         <input type="text" class="form-control" name="username" id="usernam" placeholder="f201XXXX" maxlength="9" required>
@@ -53,7 +53,7 @@
                 </div><br>
                 <div class="row">
                     <div class="col">
-                        <select name="general_secretary" class="form-control" required>
+                        <select name="gensec" class="form-control" required>
                             <option disabled selected value="">General Secretary</option>
                             <option value="Dummy A">A</option>
                             <option value="Dummy B">B</option>
@@ -62,7 +62,7 @@
                 </div><br>
                 <div class="row">
                     <div class="col">
-                        <select name="cultural_secretary" class="form-control" required>
+                        <select name="cultsec" class="form-control" required>
                             <option disabled selected value="">Cultural Secretary</option>
                             <option value="Dummy A">A</option>
                             <option value="Dummy B">B</option>
@@ -71,7 +71,7 @@
                 </div><br>
                 <div class="row">
                     <div class="col">
-                        <select name="sports_secretary" class="form-control" required>
+                        <select name="sportsec" class="form-control" required>
                             <option disabled selected value="">Sports Secretary</option>
                             <option value="Dummy A">A</option>
                             <option value="Dummy B">B</option>
