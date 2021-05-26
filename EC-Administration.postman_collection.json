@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "082e8977-fa2e-4185-ab16-628bcd2793de",
+		"name": "EC-Administration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"vedagya\",\r\n    \"password\": \"scam\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addAdmin",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {\r",
+							"    pm.collectionVariables.set(\"auth_token\", pm.response.json().token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"revanthmopidevi\",\r\n    \"password\": \"scam\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout all",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/logoutAll",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"logoutAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add voter - B",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"f20170280\",\r\n    \"password\": \"password@123\",\r\n    \"boy\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addVoter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addVoter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add voter - G",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"f20170282\",\r\n    \"password\": \"password@123\",\r\n    \"boy\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addVoter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addVoter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove voter",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"f20170280\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/deleteVoter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"deleteVoter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add president candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"A\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addPresident",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addPresident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add gensec candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"A\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addGensec",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addGensec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add Sportsec candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"A\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addSportsec",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addSportsec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add cultsec candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"a\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addCultsec",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addCultsec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get voter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"f20170280\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/getVoter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"getVoter"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:3000"
+		},
+		{
+			"key": "auth_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVjIiwiaWF0IjoxNjIyMDAzMjkwfQ.K3t-ovP88PF45waE9Jj_1DO3679Jv6BnMUCk_qNM_ME"
+		},
+		{
+			"key": "local_url",
+			"value": "localhost:3000"
+		}
+	]
+}
