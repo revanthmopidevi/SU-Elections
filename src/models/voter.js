@@ -26,6 +26,10 @@ const voterSchema = new mongoose.Schema({
         type: Boolean,
         required: false,
         default: false
+    },
+    boy: {
+        type: Boolean,
+        required: true
     }
 }, {
     timestamps: true

@@ -16,13 +16,57 @@ router.get('/info', (req, res) => {
 })
 
 // 1. vote page
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'static', 'vote', 'ballot.html'))
+router.get('/boys', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'static', 'vote', 'ballot_boys.html'))
 })
 
+router.get('/girls', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'static', 'vote', 'ballot_girls.html'))
+})
+
+
 // 2. vote route
-router.post('/', auth, async (req, res) => {
-    // console.log(req.body)
+router.post('/boys', auth, async (req, res) => {
+    if (req.boy === false) {
+        return res.status(403).send({
+            "text": "Forbidden."
+        })
+    }
+
+    try {
+        const president = await President.findOne({name: req.body.president})
+        const gensec = await Gensec.findOne({name: req.body.gensec})
+        const cultsec = await Cultsec.findOne({name: req.body.cultsec})
+        const sportsec = await Sportsec.findOne({name: req.body.sportsec})
+
+        president.votes += 1
+        gensec.votes += 1
+        cultsec.votes += 1
+        sportsec.votes += 1
+
+        await president.save()
+        await gensec.save()
+        await cultsec.save()
+        await sportsec.save()
+
+        res.status(200).send({
+            "text": "Thank You for Voting."
+        })
+    } catch (e) {
+        // console.log(e)
+        res.status(400).send({
+            "text": "Internal Server Error."
+        })
+    }
+})
+
+router.post('/girls', auth, async (req, res) => {
+    if (req.boy === true) {
+        return res.status(403).send({
+            "text": "Forbidden."
+        })
+    }
+
     try {
         const president = await President.findOne({name: req.body.president})
         const gensec = await Gensec.findOne({name: req.body.gensec})

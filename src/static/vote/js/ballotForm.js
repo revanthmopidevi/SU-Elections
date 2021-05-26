@@ -12,9 +12,8 @@ async function postFormDataAsJson({ url, formData }) {
 	};
 
 	const response = await fetch(url, fetchOptions);
-	console.log(response)
-	window.alert(response.text)
-	window.location.reload()
+
+	return response.json();
 }
 
 
@@ -26,7 +25,10 @@ async function handleFormSubmit(event) {
 
 	try {
 		const formData = new FormData(form);
-		await postFormDataAsJson({ url, formData });
+		const responseData = await postFormDataAsJson({ url, formData });
+
+		window.alert(responseData.text)
+		window.location.reload()
 	} catch (error) {
 		console.error(error);
 	}

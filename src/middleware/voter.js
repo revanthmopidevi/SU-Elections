@@ -6,6 +6,7 @@ const auth = async (req, res, next) => {
         const voter = await Voter.findByCredentials(req.body.username, req.body.password)
         voter.voted = true
         await voter.save()
+        req.boy = voter.boy
         next()
     } catch(e) {
         res.status(401).send({
