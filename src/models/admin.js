@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const secretString = process.env.SECRET_STRING
 
 const adminSchema = new mongoose.Schema({
     username: {
@@ -29,7 +30,7 @@ const adminSchema = new mongoose.Schema({
 
 adminSchema.methods.generateAuthToken = async function () {
     const admin = this
-    const token = jwt.sign({ username: admin.username}, 'secret_string')
+    const token = jwt.sign({ username: admin.username}, secretString)
     admin.tokens = admin.tokens.concat({token})
     await admin.save()
     return token

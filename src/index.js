@@ -7,7 +7,7 @@ const adminRouter = require('./routers/admin')
 const voterRouter = require('./routers/voter')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 
 app.use(express.json())
 app.use('/admin', adminRouter)
