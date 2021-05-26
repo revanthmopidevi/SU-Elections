@@ -9,18 +9,18 @@ const voterSchema = new mongoose.Schema({
         lowercase:true,
         unique: true,
         trim:true,
-        required: true
+        required: true,
+        validate(value) {
+            if (value.length !== 9) {
+                throw new Error("Username format incorrect.")
+            }
+        }
     },
     password: {
         type: String,
         required: true,
         trim: true,
-        minlength: 7,
-        validate(value) {
-            if (value.toLowerCase().includes('password')) {
-                throw new Error("Password too weak.")
-            }
-        }
+        minlength: 7
     },
     tokens: [{
         token: {
@@ -40,6 +40,30 @@ voterSchema.methods.generateAuthToken = async function () {
     return token
 }
 
+voterSchema.statics.findByCredentials = async (username, password) => {
+    const voter = await Voter.findOne({username: username})
+    
+    if (!voter) {
+        throw new Error("Wrong Username or Password.")
+    }
+    const passwordOk = await bcrypt.compare(password, voter.password)
+    if (!passwordOk) {
+        throw new Error("Wrong Username or Password.")
+    }
+
+    return voter
+}
+
+voterSchema.methods.getPublicProfile = function () {
+    const voter = this
+    const voterProfile = voter.toObject()
+
+    delete voterProfile.password
+    delete voterProfile.tokens
+
+    return voterProfile
+}
+
 voterSchema.pre('save', async function (next) {
     const voter = this
     if (voter.isModified('password')) {
@@ -48,5 +72,5 @@ voterSchema.pre('save', async function (next) {
     next()
 })
 
-const voter = mongoose.model('voter', voterSchema)
+const Voter = mongoose.model('Voter', voterSchema)
 module.exports = Voter

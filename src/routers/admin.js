@@ -1,15 +1,15 @@
 const express = require('express')
 const router = new express.Router()
 const Admin = require('../models/admin')
+const Voter = require('../models/voter')
 const auth = require('../middleware/admin')
 
 // 0. create admin
-router.post('/create', async (req, res) => {
+router.post('/addAdmin', auth, async (req, res) => {
     const admin = new Admin(req.body)
     try {
         await admin.save()
-        const token = admin.generateAuthToken()
-        res.send({admin: admin.getPublicProfile(), token: token})
+        res.send({admin: admin.getPublicProfile()})
     } catch (error) {
         res.status(400).send(error)
     }
@@ -72,6 +72,25 @@ router.patch('/update', auth, async (req, res) => {
 })
 
 // 5. add voter
+router.post('/addVoter', auth ,async (req, res) => {
+    const voter = new Voter(req.body)
+    const password = req.body.password
+    try {
+        await voter.save()
+        res.send({voter: voter.getPublicProfile(), password})
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
 
+// 6. remove voter
+router.delete('/deleteVoter', auth, async (req, res) => {
+    try {
+        await Voter.findOneAndDelete({username: req.body.username})
+        res.status(200).send()
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
 
 module.exports = router

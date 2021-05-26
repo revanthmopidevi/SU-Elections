@@ -16,11 +16,6 @@ const adminSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 7,
-        validate(value) {
-            if (value.toLowerCase().includes('password')) {
-                throw new Error("Password too weak.")
-            }
-        }
     },
     tokens: [{
         token: {
@@ -73,5 +68,4 @@ adminSchema.pre('save', async function (next) {
 })
 
 const Admin = mongoose.model('Admin', adminSchema)
-
 module.exports = Admin
