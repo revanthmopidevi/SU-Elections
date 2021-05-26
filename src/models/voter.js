@@ -22,23 +22,14 @@ const voterSchema = new mongoose.Schema({
         trim: true,
         minlength: 7
     },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }]
+    voted: {
+        type: Boolean,
+        required: false,
+        default: true
+    }
 }, {
     timestamps: true
 })
-
-voterSchema.methods.generateAuthToken = async function () {
-    const voter = this
-    const token = jwt.sign({ username: voter.username}, 'secret_string')
-    voter.tokens = voter.tokens.concat({token})
-    await voter.save()
-    return token
-}
 
 voterSchema.statics.findByCredentials = async (username, password) => {
     const voter = await Voter.findOne({username: username})
@@ -54,15 +45,6 @@ voterSchema.statics.findByCredentials = async (username, password) => {
     return voter
 }
 
-voterSchema.methods.getPublicProfile = function () {
-    const voter = this
-    const voterProfile = voter.toObject()
-
-    delete voterProfile.password
-    delete voterProfile.tokens
-
-    return voterProfile
-}
 
 voterSchema.pre('save', async function (next) {
     const voter = this

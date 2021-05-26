@@ -6,12 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="icon" type="image/png" href="">
-        <script type="text/javascript"> 
+        <!-- <script type="text/javascript"> 
             window.history.forward(); 
             function noBack() { 
                 window.history.forward(); 
             } 
-        </script>
+        </script> -->
+        <script src="./js/loginForm.js"></script>
         <style>
             html, body
             {height:100vh;}
@@ -32,10 +33,10 @@
     <body>
         <div class="container">
             <img src="./images/logo.jpg" alt="election.commission@hyderabad.bits-pilani.ac.in" height="140px" width="420px">
-            <form method="POST" action="/login">
+            <form method="POST" action="/vote/login" id="loginForm">
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" name="loginID" id="loginID" placeholder="f201XXXX" maxlength="9" required>
+                        <input type="text" class="form-control" name="username" id="usernam" placeholder="f201XXXX" maxlength="9" required>
                     </div>
                     <div class="col">
                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
