@@ -1,9 +1,7 @@
 const express = require('express')
 const router = new express.Router()
-const adminConn = require('../db/admin')
-const adminSchema = require('../schema/admin')
-const Admin = adminConn.model('Admin', adminSchema)
-const auth = require('../middleware/authAdmin')
+const Admin = require('../models/admin')
+const auth = require('../middleware/admin')
 
 // 0. create admin
 router.post('/create', async (req, res) => {
@@ -16,7 +14,6 @@ router.post('/create', async (req, res) => {
         res.status(400).send(error)
     }
 })
-
 
 // 1. login admin
 router.post('/login', async (req, res) => {
