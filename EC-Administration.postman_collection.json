@@ -52,7 +52,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"revanthmopidevi\",\r\n    \"password\": \"scam\"\r\n}",
+					"raw": "{\r\n    \"username\": \"revanthmopidevi\",\r\n    \"password\": \"democracyisscam\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -217,6 +217,87 @@
 			"response": []
 		},
 		{
+			"name": "add secretary candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0283H\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addSecretary",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addSecretary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add joint secretary candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0283H\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addJSecretary",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addJSecretary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add treasurer candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0283H\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addTreasurer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addTreasurer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "add gensec candidate",
 			"request": {
 				"method": "POST",
@@ -333,13 +414,53 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{local_url}}/admin/deleteVoters",
+					"raw": "{{url}}/admin/deleteVoters",
 					"host": [
-						"{{local_url}}"
+						"{{url}}"
 					],
 					"path": [
 						"admin",
 						"deleteVoters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get voted list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/voted",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"voted"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update credentials - admin",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"f20170280\",\r\n    \"password\": \"democracyisscam\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/admin/update",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"update"
 					]
 				}
 			},
