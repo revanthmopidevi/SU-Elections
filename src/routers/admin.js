@@ -61,7 +61,7 @@ router.post('/logoutAll', auth, async (req, res) => {
 // 4. update admin credentials
 router.patch('/update', auth, async (req, res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['name', 'password', 'age']
+    const allowedUpdates = ['username', 'password']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     
     if (!isValidOperation) {
@@ -208,6 +208,5 @@ router.post('/addTreasurer', auth, async (req, res) => {
         res.status(400).send(error)
     }
 })
-
 
 module.exports = router
