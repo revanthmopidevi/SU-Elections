@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"vedagya\",\r\n    \"password\": \"scam\"\r\n}",
+					"raw": "{\r\n    \"username\": \"vedagya\",\r\n    \"password\": \"democracyisscam\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -196,7 +196,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"A\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0283H\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -322,6 +322,24 @@
 					"path": [
 						"admin",
 						"getVoter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete all voters",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{local_url}}/admin/deleteVoters",
+					"host": [
+						"{{local_url}}"
+					],
+					"path": [
+						"admin",
+						"deleteVoters"
 					]
 				}
 			},
