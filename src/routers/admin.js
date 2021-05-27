@@ -209,4 +209,29 @@ router.post('/addTreasurer', auth, async (req, res) => {
     }
 })
 
+// 19. get results
+router.get('/results', auth, async (req, res) => {
+    try {
+        const president = await President.find({})
+        const gensec = await Gensec.find({})
+        const cultsec = await Cultsec.find({})
+        const sportsec = await Sportsec.find({})
+        const secretary = await Secretary.find({})
+        const jsecretary = await JSecretary.find({})
+        const treasurer = await Treasurer.find({})
+
+        res.status(200).send({
+            president,
+            gensec,
+            cultsec,
+            sportsec,
+            secretary,
+            jsecretary,
+            treasurer
+        })
+    } catch (error) {
+        res.status(400).send()
+    }
+    
+})
 module.exports = router
