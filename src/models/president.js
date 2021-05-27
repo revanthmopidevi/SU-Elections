@@ -32,7 +32,7 @@ presidentSchema.statics.addVote = async (name) => {
     }
     
     president.votes += 1
-    president.save()
+    await president.save()
 }
 
 

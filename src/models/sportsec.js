@@ -32,7 +32,7 @@ sportsecSchema.statics.addVote = async (name) => {
     }
     
     sportsec.votes += 1
-    sportsec.save()
+    await sportsec.save()
 }
 
 

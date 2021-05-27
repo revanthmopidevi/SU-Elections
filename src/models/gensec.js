@@ -32,7 +32,7 @@ gensecSchema.statics.addVote = async (name) => {
     }
     
     gensec.votes += 1
-    gensec.save()
+    await gensec.save()
 }
 
 

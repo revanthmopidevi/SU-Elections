@@ -32,7 +32,7 @@ cultsecSchema.statics.addVote = async (name) => {
     }
     
     cultsec.votes += 1
-    cultsec.save()
+    await cultsec.save()
 }
 
 
