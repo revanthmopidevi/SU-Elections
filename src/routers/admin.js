@@ -167,7 +167,7 @@ router.delete('/deleteVoters', auth, async (req, res) => {
 })
 
 // 15. get voted list
-router.get('/voted', async (req, res) => {
+router.get('/voted', auth, async (req, res) => {
     try {
         const voted = await Voted.find({})
         res.status(200).send(voted)
