@@ -151,4 +151,8 @@ router.get('/getVoter', auth, async (req, res) => {
         res.status(400).send(error)
     }
 })
+// 13. revoke voter access
+router.post('/revokeAccess', async (req, res) => {
+    
+})
 module.exports = router
