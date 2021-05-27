@@ -465,6 +465,24 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get results",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/results",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"results"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
