@@ -2,6 +2,7 @@ const express = require('express')
 const router = new express.Router()
 const Admin = require('../models/admin')
 const Voter = require('../models/voter')
+const Voted = require('../models/voted')
 const President = require('../models/president')
 const Gensec = require('../models/gensec')
 const Cultsec = require('../models/cultsec')
@@ -151,8 +152,25 @@ router.get('/getVoter', auth, async (req, res) => {
         res.status(400).send(error)
     }
 })
-// 13. revoke voter access
-router.post('/revokeAccess', async (req, res) => {
+// 13. revoke all voter access
+router.delete('/deleteVoters', auth, async (req, res) => {
+    try {
+        await Voter.deleteMany({})
+        res.status(200).send()
+    } catch (error) {
+        res.status(400).send(error)
+    }
     
 })
+
+// 15. get voted list
+router.get('/voted', async (req, res) => {
+    try {
+        const voted = await Voted.find({})
+        res.status(200).send(voted)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
 module.exports = router

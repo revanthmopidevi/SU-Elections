@@ -29,11 +29,6 @@ const voterSchema = new mongoose.Schema({
     boy: {
         type: Boolean,
         required: true
-    },
-    expireAt: {
-        type: Date,
-        default: Date.now,
-        index: { expires: '10m' }
     }
 })
 
@@ -52,9 +47,6 @@ voterSchema.statics.findByCredentials = async (username, password) => {
         throw new Error("Vote casted.")
     }
 
-    if (voter.access === false) {
-        throw new Error("Access Denied.")
-    }
     return voter
 }
 
