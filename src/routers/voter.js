@@ -6,6 +6,9 @@ const President = require('../models/president')
 const Gensec = require('../models/gensec')
 const Cultsec = require('../models/cultsec')
 const Sportsec = require('../models/sportsec')
+const Secretary = require('../models/secretary')
+const JSecretary = require('../models/jsecretary')
+const Treasurer = require('../models/treasurer')
 const auth = require('../middleware/voter')
 
 router.use('/', express.static(path.join(__dirname, '..', 'static', 'vote')));
@@ -22,6 +25,10 @@ router.get('/boys', (req, res) => {
 
 router.get('/girls', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'static', 'vote', 'ballot_girls.html'))
+})
+
+router.get('/club', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'static', 'vote', 'ballot_club.html'))
 })
 
 
@@ -82,6 +89,37 @@ router.post('/girls', auth, async (req, res) => {
         await gensec.save()
         await cultsec.save()
         await sportsec.save()
+
+        res.status(200).send({
+            "text": "Thank You for Voting."
+        })
+    } catch (e) {
+        // console.log(e)
+        res.status(400).send({
+            "text": "Internal Server Error."
+        })
+    }
+})
+
+router.post('/club', auth, async (req, res) => {
+    try {
+        if (req.body.secretary) {
+            const secretary = await Secretary.findOne({name: req.body.secretary})
+            secretary.votes += 1
+            await secretary.save()
+        }
+
+        if (req.body.jsecretary) {
+            const jsecretary = await JSecretary.findOne({name: req.body.jsecretary})
+            jsecretary.votes += 1
+            await jsecretary.save()
+        }
+
+        if (req.body.secretary) {
+            const treasurer = await Treasurer.findOne({name: req.body.treasurer})
+            treasurer.votes += 1
+            await treasurer.save()
+        }
 
         res.status(200).send({
             "text": "Thank You for Voting."
