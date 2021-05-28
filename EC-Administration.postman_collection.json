@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"vedagya\",\r\n    \"password\": \"democracyisscam\"\r\n}",
+					"raw": "{\r\n    \"username\": \"revanthmopidevi\",\r\n    \"password\": \"democracyisscam\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -115,7 +115,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"f20170280\",\r\n    \"password\": \"password@123\",\r\n    \"boy\": true\r\n}",
+					"raw": "{\r\n    \"username\": \"f20170280\",\r\n    \"boy\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -304,7 +304,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"A\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -331,7 +331,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"A\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -358,7 +358,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"a\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
