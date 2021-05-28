@@ -116,9 +116,7 @@ router.post('/addVoter', async (req, res) => {
                 from: process.env.GMAIL_ID,
                 to: voter.username + process.env.EMAIL_DOMAIN,
                 subject: process.env.MAIL_SUBJECT,
-                text: {
-                    password
-                }
+                text: password
             }
             transporter.sendMail(mailOptions)
         } catch (error) {
