@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
+const bcrypt = require('bcryptjs')
 
-const votedSchema = new mongoose.Schema({
+const voterMasterSchema = new mongoose.Schema({
     username: {
         type: String,
         lowercase:true,
@@ -14,12 +15,12 @@ const votedSchema = new mongoose.Schema({
             }
         }
     },
-    boy: {
+    voted: {
         type: Boolean,
-        required: true
+        required: false,
+        default: false
     }
 })
 
-
-const Voted = mongoose.model('Voted', votedSchema)
-module.exports = Voted
+const voterMaster = mongoose.model('voterMaster', voterMasterSchema)
+module.exports = voterMaster

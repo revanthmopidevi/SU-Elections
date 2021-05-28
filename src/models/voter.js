@@ -17,18 +17,16 @@ const voterSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
-        trim: true,
-        minlength: 7
-    },
-    voted: {
-        type: Boolean,
-        required: false,
-        default: false
+        required: true
     },
     boy: {
         type: Boolean,
         required: true
+    },
+    expireAt: {
+        type: Date,
+        default: Date.now,
+        index: { expires: '15m' },
     }
 })
 
@@ -38,13 +36,9 @@ voterSchema.statics.findByCredentials = async (username, password) => {
     if (!voter) {
         throw new Error("Wrong Username or Password.")
     }
-    const passwordOk = await bcrypt.compare(password, voter.password)
-    if (!passwordOk) {
-        throw new Error("Wrong Username or Password.")
-    }
 
-    if (voter.voted === true) {
-        throw new Error("Vote casted.")
+    if (!await bcrypt.compare(password, voter.password)) {
+        throw new Error("Wrong Username or Password.")   
     }
 
     return voter

@@ -2,7 +2,7 @@ const express = require('express')
 const router = new express.Router()
 const Admin = require('../models/admin')
 const Voter = require('../models/voter')
-const Voted = require('../models/voted')
+const VoterMaster = require('../models/voterMaster')
 const President = require('../models/president')
 const Gensec = require('../models/gensec')
 const Cultsec = require('../models/cultsec')
@@ -10,7 +10,9 @@ const Sportsec = require('../models/sportsec')
 const Secretary = require('../models/secretary')
 const JSecretary = require('../models/jsecretary')
 const Treasurer = require('../models/treasurer')
+const generator = require('generate-password')
 const auth = require('../middleware/admin')
+const bcrypt = require('bcryptjs')
 
 // 0. create admin
 router.post('/addAdmin', auth, async (req, res) => {
@@ -79,13 +81,30 @@ router.patch('/update', auth, async (req, res) => {
     }
 })
 
-// 5. add voter
-router.post('/addVoter', auth ,async (req, res) => {
-    const voter = new Voter(req.body)
-    const password = req.body.password
+// 5. add voter - NO AUTH
+router.post('/addVoter', async (req, res) => {
+    const exists = await VoterMaster.exists({username: req.body.username, voted: true})
+    if (exists) {
+        return res.status(400).send("User already created.")
+    }
+    // generate password
+    const password = generator.generate({
+        length: 7,
+        numbers: true
+    })
+    req.body.password = password
+    console.log(passwor)
+    // save models and respond
     try {
+        const voter = new Voter(req.body)
         await voter.save()
-        res.send({voter, password})
+        if (!await VoterMaster.exists({username: req.body.username})) {
+            const voterMaster = new VoterMaster({
+                username: req.body.username
+            })
+            await voterMaster.save()
+        }
+        res.status(201).send(voter.username)
     } catch (error) {
         res.status(400).send(error)
     }
@@ -148,10 +167,9 @@ router.post('/addSportsec', auth, async (req, res) => {
 // 12. get voter data
 router.get('/getVoter', auth, async (req, res) => {
     try {
-        const voter = await Voter.findOne({username: req.body.username})
-        res.status(200).send(voter)
+        const voterMaster = await VoterMaster.findOne({username: req.body.username})
+        res.status(200).send(voterMaster)
     } catch (error) {
-        console.log(error)
         res.status(400).send(error)
     }
 })
@@ -169,8 +187,8 @@ router.delete('/deleteVoters', auth, async (req, res) => {
 // 15. get voted list
 router.get('/voted', auth, async (req, res) => {
     try {
-        const voted = await Voted.find({})
-        res.status(200).send(voted)
+        const voterMaster = await VoterMaster.find({voted: true})
+        res.status(200).send(voterMaster)
     } catch (error) {
         res.status(400).send(error)
     }

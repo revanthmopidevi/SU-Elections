@@ -1,0 +1,9 @@
+1. remove auth from add voter routes - done
+2. add auto expiry to credentials - done
+3. remove password display in response - done
+4. add email backend
+5. add password for dosh and timestamps
+6. create random password in the backend - done
+
+$2a$08$BBuTWaNDHKQn2OdVdr11y.scY29zRHOm6RqbEqobOAZx4cZMdTW/G
+$2a$08$eJx7e.wrTJmuqMm0ErFYV.qaMSy3KN7qCn5a9qXoYp/Togq0GRZii

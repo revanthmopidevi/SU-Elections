@@ -1,16 +1,16 @@
 const Voter = require('../models/voter')
-const Voted = require('../models/voted')
+const VoterMaster = require('../models/voterMaster')
 
 const auth = async (req, res, next) => {
     try {
         const voter = await Voter.findByCredentials(req.body.username, req.body.password)
-        if (!voter) {
+        const voterMaster = await VoterMaster.findOne({username: req.body.username})
+        
+        if (!voter || voterMaster.voted) {
             return res.status(404).send("Invalid or Expired Credentials")
         }
-        const voted = new Voted({username: voter.username, boy: voter.boy})
-        await voted.save()
-        voter.voted = true
-        await voter.save()
+        voterMaster.voted = true
+        await voterMaster.save()
         req.boy = voter.boy
         next()
     } catch(e) {

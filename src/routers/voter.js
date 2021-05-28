@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require('path')
 const router = new express.Router()
-const Voter = require('../models/voter')
 const President = require('../models/president')
 const Gensec = require('../models/gensec')
 const Cultsec = require('../models/cultsec')
@@ -60,7 +59,6 @@ router.post('/boys', auth, async (req, res) => {
             "text": "Thank You for Voting."
         })
     } catch (e) {
-        // console.log(e)
         res.status(400).send({
             "text": "Internal Server Error."
         })
