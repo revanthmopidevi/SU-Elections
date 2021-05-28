@@ -13,8 +13,8 @@ const auth = require('../middleware/voter')
 router.use('/', express.static(path.join(__dirname, '..', 'static', 'vote')));
 
 // 0. Information Page
-router.get('/info', (req, res) => {
-    res.send({"response": "Accepted"})
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'static', 'vote', 'info.html'))
 })
 
 // 1. vote page
