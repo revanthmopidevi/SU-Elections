@@ -19,10 +19,6 @@ app.use('/vote', voterRouter)
 
 app.disable('x-powered-by')
 
-app.get('/', (req, res) => {
-    res.send(req.ip)
-})
-
 app.listen(port, () => {
     console.log(`server running on port ${port}.`)
 })
