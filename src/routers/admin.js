@@ -93,7 +93,7 @@ router.post('/addVoter', async (req, res) => {
         numbers: true
     })
     req.body.password = password
-    console.log(passwor)
+    console.log(password)
     // save models and respond
     try {
         const voter = new Voter(req.body)
