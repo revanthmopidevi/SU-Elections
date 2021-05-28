@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 require('./db/mongoose')
+require('./initialise')
 
 //middleware
 const maintenance = require('./middleware/maintenance')

@@ -24,6 +24,7 @@
     "generate-password": "^1.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.11",
+    "nodemailer": "^6.6.1",
     "validator": "^13.6.0"
   },
   "devDependencies": {

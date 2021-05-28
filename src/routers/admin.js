@@ -12,7 +12,7 @@ const JSecretary = require('../models/jsecretary')
 const Treasurer = require('../models/treasurer')
 const generator = require('generate-password')
 const auth = require('../middleware/admin')
-const bcrypt = require('bcryptjs')
+const nodemailer = require('nodemailer')
 
 // 0. create admin
 router.post('/addAdmin', auth, async (req, res) => {
@@ -93,7 +93,6 @@ router.post('/addVoter', async (req, res) => {
         numbers: true
     })
     req.body.password = password
-    console.log(password)
     // save models and respond
     try {
         const voter = new Voter(req.body)
@@ -103,6 +102,27 @@ router.post('/addVoter', async (req, res) => {
                 username: req.body.username
             })
             await voterMaster.save()
+        }
+
+        try {
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: process.env.GMAIL_ID,
+                  pass: process.env.GMAIL_PASSWORD
+                }
+            })
+            const mailOptions = {
+                from: process.env.GMAIL_ID,
+                to: voter.username + process.env.EMAIL_DOMAIN,
+                subject: process.env.MAIL_SUBJECT,
+                text: {
+                    password
+                }
+            }
+            transporter.sendMail(mailOptions)
+        } catch (error) {
+            throw new Error(error)
         }
         res.status(201).send(voter.username)
     } catch (error) {
