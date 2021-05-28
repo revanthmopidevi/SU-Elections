@@ -17,6 +17,10 @@ app.use(express.json())
 app.use('/admin', adminRouter)
 app.use('/vote', voterRouter)
 
+app.get('/', (req, res) => {
+    res.send(req.ip)
+})
+
 app.listen(port, () => {
     console.log(`server running on port ${port}.`)
 })
