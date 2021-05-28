@@ -18,7 +18,7 @@ app.use('/admin', adminRouter)
 app.use('/vote', voterRouter)
 
 app.get('/', (req, res) => {
-    res.send(req.ip)
+    res.send(req.ips)
 })
 
 app.listen(port, () => {
