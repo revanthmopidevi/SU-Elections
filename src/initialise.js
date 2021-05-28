@@ -1,6 +1,6 @@
 const Admin = require('./models/admin')
 
-const exists = Admin.exits({
+const exists = Admin.exists({
     username: process.env.USERNAME
 })
 
