@@ -26,7 +26,7 @@ const voterSchema = new mongoose.Schema({
     expireAt: {
         type: Date,
         default: Date.now,
-        index: { expires: '15m' },
+        index: { expires: '10m' },
     }
 })
 
