@@ -17,6 +17,8 @@ app.use(express.json())
 app.use('/admin', adminRouter)
 app.use('/vote', voterRouter)
 
+app.disable('x-powered-by')
+
 app.get('/', (req, res) => {
     res.send(req.ip)
 })
