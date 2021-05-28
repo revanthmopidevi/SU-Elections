@@ -116,8 +116,7 @@ router.post('/addVoter', async (req, res) => {
                 from: process.env.GMAIL_ID,
                 to: voter.username + process.env.EMAIL_DOMAIN,
                 subject: process.env.MAIL_SUBJECT,
-                text: `Your username and password are ${voter.username} and ${password} respectively. The credentials shall be valid only for the next 10 minutes. In case of any queries, contact
-                the Election Commission` 
+                text: `Your username and password are ${voter.username} and ${password} respectively. The credentials shall be valid only for the next 10 minutes. In case of any queries, contact the Election Commission` 
             }
             transporter.sendMail(mailOptions)
         } catch (error) {
