@@ -8,6 +8,7 @@ const Sportsec = require('../models/sportsec')
 const Secretary = require('../models/secretary')
 const JSecretary = require('../models/jsecretary')
 const Treasurer = require('../models/treasurer')
+const VoterMaster = require('../models/voterMaster')
 const auth = require('../middleware/voter')
 
 router.use('/', express.static(path.join(__dirname, '..', 'static', 'vote')));
@@ -55,6 +56,10 @@ router.post('/boys', auth, async (req, res) => {
         await cultsec.save()
         await sportsec.save()
 
+        const voterMaster = await VoterMaster.findOne({username: req.body.username})
+        voterMaster.voted = true
+        await voterMaster.save()
+
         res.status(200).send({
             "text": "Thank You for Voting."
         })
@@ -88,6 +93,10 @@ router.post('/girls', auth, async (req, res) => {
         await cultsec.save()
         await sportsec.save()
 
+        const voterMaster = await VoterMaster.findOne({username: req.body.username})
+        voterMaster.voted = true
+        await voterMaster.save()
+
         res.status(200).send({
             "text": "Thank You for Voting."
         })
@@ -119,6 +128,10 @@ router.post('/club', auth, async (req, res) => {
             await treasurer.save()
         }
 
+        const voterMaster = await VoterMaster.findOne({username: req.body.username})
+        voterMaster.voted = true
+        await voterMaster.save()
+        
         res.status(200).send({
             "text": "Thank You for Voting."
         })

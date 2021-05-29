@@ -9,8 +9,8 @@ const auth = async (req, res, next) => {
         if (!voter || voterMaster.voted) {
             return res.status(404).send("Invalid or Expired Credentials")
         }
-        voterMaster.voted = true
-        await voterMaster.save()
+        // voterMaster.voted = true
+        // await voterMaster.save()
         req.boy = voter.boy
         next()
     } catch(e) {
