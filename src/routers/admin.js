@@ -15,21 +15,41 @@ const auth = require('../middleware/admin')
 const nodemailer = require('nodemailer')
 
 // 0. create admin
-router.post('/addAdmin', auth, async (req, res) => {
-    const admin = new Admin(req.body)
-    try {
-        await admin.save()
-        res.send({admin: admin.getPublicProfile()})
-    } catch (error) {
-        res.status(400).send(error)
-    }
-})
+// router.post('/addAdmin', auth, async (req, res) => {
+//     const admin = new Admin(req.body)
+//     try {
+//         await admin.save()
+//         res.send({admin: admin.getPublicProfile()})
+//     } catch (error) {
+//         res.status(400).send(error)
+//     }
+// })
 
 // 1. login admin
 router.post('/login', async (req, res) => {
     try {
         const admin = await Admin.findByCredentials(req.body.username, req.body.password)
         const token = await admin.generateAuthToken()
+
+        try {
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: process.env.GMAIL_ID,
+                  pass: process.env.GMAIL_PASSWORD
+                }
+            })
+            const mailOptions = {
+                from: process.env.GMAIL_ID,
+                to: process.env.GMAIL_ID,
+                subject: 'Administrator Login Notification',
+                text: 'New Admin login detected. Use /admin/logoutAll route to revoke all admin access. Use /admin/update to upate admin password.' 
+            }
+            transporter.sendMail(mailOptions)
+        } catch (error) {
+            throw new Error(error)
+        }
+
         res.send({admin: admin.getPublicProfile(), token: token})
     } catch (error) {
         res.status(400).send(error)
