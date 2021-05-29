@@ -6,33 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "add admin",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"revanthmopidevi\",\r\n    \"password\": \"democracyisscam\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/admin/addAdmin",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"admin",
-						"addAdmin"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "login",
 			"event": [
 				{
@@ -52,7 +25,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"revanthmopidevi\",\r\n    \"password\": \"democracyisscam\"\r\n}",
+					"raw": "{\r\n    \"username\": \"f20170280\",\r\n    \"password\": \"democracyisscam\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -196,7 +169,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0283H\"\r\n}",
+					"raw": "{\r\n    \"name\": \"a\",\r\n    \"ID\": \"2017A7PS0280H\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -304,7 +277,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"raw": "{\r\n    \"name\": \"a\",\r\n    \"ID\": \"2017A8PS0287H\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -331,7 +304,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"raw": "{\r\n    \"name\": \"a\",\r\n    \"ID\": \"2017A3PS0284H\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -358,7 +331,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"b\",\r\n    \"ID\": \"2017AAPS0280H\"\r\n}",
+					"raw": "{\r\n    \"name\": \"a\",\r\n    \"ID\": \"2017A1PS0287H\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -523,10 +496,6 @@
 		{
 			"key": "auth_token",
 			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVjIiwiaWF0IjoxNjIyMDAzMjkwfQ.K3t-ovP88PF45waE9Jj_1DO3679Jv6BnMUCk_qNM_ME"
-		},
-		{
-			"key": "local_url",
-			"value": "localhost:3000"
 		}
 	]
 }
