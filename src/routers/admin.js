@@ -7,9 +7,6 @@ const President = require('../models/president')
 const Gensec = require('../models/gensec')
 const Cultsec = require('../models/cultsec')
 const Sportsec = require('../models/sportsec')
-const Secretary = require('../models/secretary')
-const JSecretary = require('../models/jsecretary')
-const Treasurer = require('../models/treasurer')
 const generator = require('generate-password')
 const auth = require('../middleware/admin')
 const nodemailer = require('nodemailer')
@@ -232,38 +229,6 @@ router.get('/voted', auth, async (req, res) => {
     }
 })
 
-// 16. add secretary candidate
-router.post('/addSecretary', auth, async (req, res) => {
-    const candidate = new Secretary(req.body)
-    try {
-        await candidate.save()
-        res.status(201).send()
-    } catch (error) {
-        res.status(400).send(error)
-    }
-})
-
-// 17. add joint secretary candidate
-router.post('/addJSecretary', auth, async (req, res) => {
-    const candidate = new JSecretary(req.body)
-    try {
-        await candidate.save()
-        res.status(201).send()
-    } catch (error) {
-        res.status(400).send(error)
-    }
-})
-
-// 18. add secretary candidate
-router.post('/addTreasurer', auth, async (req, res) => {
-    const candidate = new Treasurer(req.body)
-    try {
-        await candidate.save()
-        res.status(201).send()
-    } catch (error) {
-        res.status(400).send(error)
-    }
-})
 
 // 19. get results
 router.get('/results', auth, async (req, res) => {
@@ -272,18 +237,12 @@ router.get('/results', auth, async (req, res) => {
         const gensec = await Gensec.find({})
         const cultsec = await Cultsec.find({})
         const sportsec = await Sportsec.find({})
-        const secretary = await Secretary.find({})
-        const jsecretary = await JSecretary.find({})
-        const treasurer = await Treasurer.find({})
 
         res.status(200).send({
             president,
             gensec,
             cultsec,
-            sportsec,
-            secretary,
-            jsecretary,
-            treasurer
+            sportsec
         })
     } catch (error) {
         res.status(400).send()
