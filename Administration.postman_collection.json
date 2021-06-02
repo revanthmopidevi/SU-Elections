@@ -1,0 +1,537 @@
+{
+	"info": {
+		"_postman_id": "082e8977-fa2e-4185-ab16-628bcd2793de",
+		"name": "EC-Administration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200) {\r",
+							"    pm.collectionVariables.set(\"auth_token\", pm.response.json().token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout all",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/logoutAll",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"logoutAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add voter - B",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"\",\r\n    \"boy\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addVoter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addVoter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add voter - G",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"\",\r\n    \"boy\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addVoter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addVoter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove voter",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/deleteVoter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"deleteVoter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add president candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"ID\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addPresident",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addPresident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add secretary candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"ID\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addSecretary",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addSecretary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add joint secretary candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"ID\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addJSecretary",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addJSecretary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add treasurer candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"ID\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addTreasurer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addTreasurer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add gensec candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"ID\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addGensec",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addGensec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add Sportsec candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"ID\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addSportsec",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addSportsec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add cultsec candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"ID\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addCultsec",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addCultsec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get voter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/getVoter",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"getVoter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete all voters",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/deleteVoters",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"deleteVoters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get voted list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/voted",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"voted"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update credentials - admin",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/admin/update",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get results",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/admin/results",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"results"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add techsec candidate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"ID\": \"\"  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/admin/addtechSecretary",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"admin",
+						"addtechSecretary"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": ""
+		},
+		{
+			"key": "auth_token",
+			"value": ""
+		}
+	]
+}
