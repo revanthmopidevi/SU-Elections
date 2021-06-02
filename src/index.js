@@ -17,6 +17,10 @@ app.use(express.json())
 app.use('/admin', adminRouter)
 app.use('/vote', voterRouter)
 
+app.get('*', (req, res) => {
+    res.status(404).send("The Page You Are Looking For Does Not Exist.")
+})
+
 app.disable('x-powered-by')
 
 app.listen(port, () => {
