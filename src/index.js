@@ -17,8 +17,9 @@ app.use(express.json())
 app.use('/admin', adminRouter)
 app.use('/vote', voterRouter)
 
+app.use('*', express.static(path.join(__dirname, 'static', 'vote')));
 app.get('*', (req, res) => {
-    res.status(404).send("The Page You Are Looking For Does Not Exist.")
+    res.status(404).sendFile(path.join(__dirname, '..', 'static', 'vote', 'error.html'))
 })
 
 app.disable('x-powered-by')
