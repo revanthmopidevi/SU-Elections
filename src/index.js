@@ -19,7 +19,7 @@ app.use('/vote', voterRouter)
 
 app.use('*', express.static(path.join(__dirname, 'static', 'vote')));
 app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '..', 'static', 'vote', 'error.html'))
+    res.sendFile(path.join(__dirname, '..', 'static', 'vote', 'error.html'))
 })
 
 app.disable('x-powered-by')
