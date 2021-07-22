@@ -8,11 +8,8 @@ job ('SU_Elections') {
     triggers {
         scm('H/5 * * * *')
     }
-    wrappers {
-        nodejs ('NodeJS') // this is the name of the NodeJS installation in 
-                         // Manage Jenkins -> Configure Tools -> NodeJS Installations -> Name
+    nodejs ('NodeJS') {
+        npm install
     }
-    steps {
-        sh ("npm install")
-    }
+    
 }
