@@ -5,7 +5,9 @@ job ('SU_Elections') {
             node / gitConfigEmail('revanthmopidevi@gmail.com')
         }
     }
-  
+    triggers {
+        scm('H/5 * * * *')
+    }
     wrappers {
         nodejs ('NodeJS') // this is the name of the NodeJS installation in 
                          // Manage Jenkins -> Configure Tools -> NodeJS Installations -> Name
