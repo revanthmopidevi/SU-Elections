@@ -5,6 +5,8 @@ COPY . /dist
 RUN npm install
 // ENV VARIABLES
 ENV PORT=3000
+ENV USERNAME=admin
+ENV PASSWORD=admin
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]
