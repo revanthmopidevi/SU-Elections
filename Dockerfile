@@ -1,4 +1,4 @@
-FROM node:dubnium-alpine
+FROM node:12
 WORKDIR dist
 COPY . /dist
 RUN npm install
