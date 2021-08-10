@@ -10,6 +10,7 @@ ENV MONGODB_URI=mongodb://admin:admin@cluster0-shard-00-00.v0vsg.mongodb.net:270
 ENV GMAIL_ID=mvsrevanth@gmail.com
 ENV GMAIL_PASSWORD=fghmumwuqwtqgiti
 ENV MAIL_SUBJECT=DEMO
+ENV EMAIL_DOMAIN="@gmail.com"
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]
