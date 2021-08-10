@@ -99,7 +99,7 @@ router.patch('/update', auth, async (req, res) => {
 })
 
 // 5. add voter - NO AUTH
-router.post('/addVoter', async (req, res) => {
+router.post('/addVoter', auth, async (req, res) => {
     const exists = await VoterMaster.exists({username: req.body.username, voted: true})
     if (exists) {
         return res.status(400).send("User already created.")
